@@ -1,6 +1,6 @@
 {
-    "name": "codeigniter4/appstarter",
-    "description": "CodeIgniter4 starter app",
+    "name": "prorataforge/prorataforge",
+    "description": "High-Precision SaaS Billing & Prorata Engine with Credit Balance Ledger for CodeIgniter 4",
     "license": "MIT",
     "type": "project",
     "homepage": "https://codeigniter.com",

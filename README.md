@@ -1,69 +1,108 @@
-# CodeIgniter 4 Application Starter
+# ProrataForge ⚡
 
-## What is CodeIgniter?
+> **High-Precision SaaS Billing & Prorata Engine** dibangun di atas CodeIgniter 4 dan PHP 8.3+.  
+> Menghitung kalkulasi pergantian paket langganan secara adil (*prorata*), mutasi saldo kredit pelanggan (*credit ledger*), penerbitan faktur atomik, dan integrasi multi-gateway pembayaran tanpa kesalahan pembulatan angka desimal (*zero float drift*).
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🌟 Fitur Utama
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- 🎯 **Aritmatika Integer Sen**: Semua nilai nominal uang disimpan dan dikalkulasi dalam satuan terkecil (sen integer) menggunakan algoritma *half-up integer division*. Tidak ada `float` untuk uang.
+- 🎛️ **Simulator Interaktif Prorata (`/playground`)**: Visualisasi *real-time* pecahan hari terpakai vs sisa hari beserta kalkulator perbedaan biaya dan generator cuplikan kode (*cURL, JavaScript, PHP, Python*).
+- 🔄 **Siklus Hidup Langganan Lengkap**:
+  - **Upgrade**: Menagih selisih pemakaian hari tersisa secara adil.
+  - **Downgrade**: Mengonversi kelebihan pembayaran paket lama menjadi saldo deposit kredit pelanggan.
+- 🧾 **Faktur Otomatis & Siap Cetak**: Penerbitan faktur berurutan, pemotongan deposit kredit, PPN 11% (1100 basis poin), pembulatan rupiah penuh, serta layout cetak A4/PDF.
+- 💳 **Multi-Gateway Adapter**:
+  - Midtrans (QRIS & verifikasi SHA-512 signature).
+  - Xendit (Invoice & token verification).
+  - Adapter Factory Pattern siap diekstensi.
+- 🛠️ **CLI Pengembang**:
+  - `php spark billing:mock-webhook [ORDER_ID]` — Simulasi webhook pelunasan lokal tanpa ngrok.
+  - `php spark billing:renew` — Command perpanjangan otomatis periode langganan berkala.
+- 🔒 **Keamanan & Skalabilitas**: Dukungan `Idempotency-Key` header, rate limit sliding window 60 req/menit, dan transaksi database multi-tabel atomik.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Installation & updates
+## 🚀 Menjalankan via Docker (1 Perintah)
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Prasyarat: Sudah terinstal [Docker Desktop](https://www.docker.com/) atau Docker Engine.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+```bash
+# 1. Clone repository
+git clone https://github.com/your-username/prorataforge.git
+cd prorataforge
 
-## Setup
+# 2. Jalankan container (aplikasi + database MySQL otomatis dibuat & dimigrasi)
+docker compose up -d
+```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Buka peramban di **`http://localhost:8080`**.
 
-## Important Change with index.php
+---
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## 💻 Menjalankan Manual (Lokal)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Kebutuhan Sistem
+- PHP 8.2 atau 8.3 (`ext-intl`, `ext-mbstring`, `ext-mysqli`, `ext-curl`)
+- MySQL 8.0+
+- Composer 2.x
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### Langkah Instalasi
+```bash
+# 1. Pasang dependensi
+composer install
 
-## Repository Management
+# 2. Siapkan environment
+cp env .env
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+# Atur koneksi database di file .env:
+# database.default.hostname = localhost
+# database.default.database = prorataforge
+# database.default.username = root
+# database.default.password = password_anda
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+# 3. Jalankan migrasi dan seeder awal
+php spark migrate --all
+php spark db:seed BillingSeeder
 
-## Server Requirements
+# 4. Jalankan server lokal
+php spark serve --host 0.0.0.0 --port 8080
+```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+---
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## 🧪 Menjalankan Pengujian (Testing)
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+Suite pengujian unit test PHPUnit telah disiapkan untuk memastikan kalkulasi finansial dan alur pembayaran selalu presisi:
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+```bash
+./vendor/bin/phpunit --no-coverage
+```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Output:
+```
+PHPUnit 10.5.66 by Sebastian Bergmann and contributors.
+...............                                                   15 / 15 (100%)
+
+Time: 00:00.024, Memory: 14.00 MB
+OK (15 tests, 26 assertions)
+```
+
+---
+
+## 🔌 Dokumentasi REST API
+
+Aplikasi menyediakan dokumentasi API dan file Postman Collection yang dapat langsung diunduh:
+- **Web Docs**: `http://localhost:8080/docs`
+- **Postman File**: `public/prorataforge-postman-collection.json`
+- **Endpoint Utama**:
+  - `POST /api/kalkulator/simulasi` — Hitung simulasi prorata secara publik.
+  - `POST /api/langganan/{id}/ganti-paket` — Eksekusi pergantian paket (wajib header `Idempotency-Key`).
+  - `POST /api/tagihan/{id}/bayar` — Persiapkan pembayaran gateway QRIS.
+  - `POST /webhook/pembayaran` — Endpoint penerima notifikasi webhook dari gateway.
+
+---
+
+## 📄 Lisensi
+Didistribusikan di bawah lisensi open-source [MIT License](LICENSE).

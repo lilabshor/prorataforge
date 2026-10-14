@@ -33,10 +33,14 @@
 database.default.hostname = localhost
 database.default.database = prorataforge
 database.default.username = root
-database.default.password = linux1
+database.default.password = ''
 database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 database.default.port = 3306
+
+# PAYMENT GATEWAYS
+MIDTRANS_SERVER_KEY = 'sandbox-secret-dummy-midtrans'
+PAYMENT_GATEWAY = 'midtrans'
 
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost

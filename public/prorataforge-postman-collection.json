@@ -1,0 +1,101 @@
+{
+  "info": {
+    "name": "ProrataForge API",
+    "description": "Koleksi API SaaS Billing & Subscription Engine ProrataForge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Simulasi Prorata (Playground API)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"harga_lama_sen\": 10000000,\n  \"harga_baru_sen\": 20000000,\n  \"tgl_mulai\": \"2026-10-01\",\n  \"tgl_selesai\": \"2026-10-31\",\n  \"tgl_ubah\": \"2026-10-16\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kalkulator/simulasi",
+          "host": ["{{base_url}}"],
+          "path": ["api", "kalkulator", "simulasi"]
+        }
+      }
+    },
+    {
+      "name": "Ganti Paket Langganan (Prorata)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Idempotency-Key", "value": "demo-idempotency-key-001" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paket_baru_id\": 2,\n  \"tgl_perubahan\": \"2026-10-15\",\n  \"kode_kupon\": \"HEMAT10\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/langganan/1/ganti-paket",
+          "host": ["{{base_url}}"],
+          "path": ["api", "langganan", "1", "ganti-paket"]
+        }
+      }
+    },
+    {
+      "name": "Rincian Tagihan",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/tagihan/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "tagihan", "1"]
+        }
+      }
+    },
+    {
+      "name": "Inisiasi Pembayaran (Midtrans QRIS)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/tagihan/1/bayar",
+          "host": ["{{base_url}}"],
+          "path": ["api", "tagihan", "1", "bayar"]
+        }
+      }
+    },
+    {
+      "name": "Webhook Pelunasan Gateway",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"order_id\": \"PF-1\",\n  \"status_code\": \"200\",\n  \"transaction_status\": \"settlement\",\n  \"gross_amount\": \"111000.00\",\n  \"signature_key\": \"YOUR_CALCULATED_SHA512_SIGNATURE\",\n  \"payment_type\": \"qris\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/webhook/pembayaran",
+          "host": ["{{base_url}}"],
+          "path": ["webhook", "pembayaran"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

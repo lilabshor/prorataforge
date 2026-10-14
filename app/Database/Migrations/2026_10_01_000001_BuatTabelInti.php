@@ -50,7 +50,7 @@ class BuatTabelInti extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey('kode');
-        $this->forge-createTable('paket_langganan');
+        $this->forge->createTable('paket_langganan');
     }
     public function down () {
         $this->forge->dropTable('paket_langganan', true);

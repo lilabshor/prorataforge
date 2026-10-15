@@ -2,7 +2,7 @@
 
 <h1>⚡ ProrataForge</h1>
 <h3>High-Precision Enterprise SaaS Billing &amp; Prorata Engine</h3>
-<p><em>Ganti paket di tengah bulan? Tagihannya tetap adil, sampai ke sen terakhir.</em></p>
+
 
 <p align="center">
   <a href="https://codeigniter.com"><img src="https://img.shields.io/badge/CodeIgniter-4.5%2B-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white" alt="CodeIgniter 4"></a>

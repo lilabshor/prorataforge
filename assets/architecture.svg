@@ -19,25 +19,25 @@
 
     <style>
       @keyframes pulsePath {
-        0% { stroke-dashoffset: 100; }
-        100% { stroke-dashoffset: 0; }
+      0% { stroke-dashoffset: 100; }
+      100% { stroke-dashoffset: 0; }
       }
       @keyframes pulseGlow {
-        0%, 100% { opacity: 0.55; }
-        50% { opacity: 1; }
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
       }
       .anim-flow {
-        stroke-dasharray: 8 6;
-        animation: pulsePath 2.4s linear infinite;
+      stroke-dasharray: 8 6;
+      animation: pulsePath 2.4s linear infinite;
       }
       .anim-pulse {
-        animation: pulseGlow 2s ease-in-out infinite;
+      animation: pulseGlow 2s ease-in-out infinite;
       }
       text {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       }
       .code-font {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
     </style>
   </defs>
@@ -55,45 +55,38 @@
   <g transform="translate(55, 36)">
     <rect x="0" y="0" width="185" height="24" rx="12" fill="#0369a1" fill-opacity="0.3" stroke="#0284c7" stroke-width="1"/>
     <circle cx="13" cy="12" r="4" fill="#38bdf8" class="anim-pulse"/>
-    <text x="25" y="16" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1">ARCHIFY • RUNTIME MAP</text>
+    <text x="25" y="16" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1">SYSTEM ARCHITECTURE</text>
 
-    <text x="0" y="54" fill="#ffffff" font-size="24" font-weight="800" letter-spacing="-0.5">ProrataForge ⚡ • Enterprise SaaS Prorata Billing Engine</text>
-    <text x="0" y="75" fill="#94a3b8" font-size="13">Zero Float Drift (Integer Sen) • Row-Level Lock (FOR UPDATE) • Idempotent REST API • Multi-Gateway</text>
+    <text x="0" y="54" fill="#ffffff" font-size="24" font-weight="800" letter-spacing="-0.5">ProrataForge - SaaS Prorata Billing Engine</text>
+    <text x="0" y="75" fill="#94a3b8" font-size="13">Integer Cents Arithmetic (BIGINT) | Row-Level Locking (FOR UPDATE) | Idempotent API | Multi-Gateway</text>
   </g>
 
   <!-- Meta Badges (Right Header) -->
   <g transform="translate(905, 36)">
     <rect x="0" y="0" width="240" height="44" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
-    <text x="15" y="18" fill="#64748b" font-size="10" font-weight="600">VERIFIED ENGINE STATE</text>
-    <text x="15" y="34" fill="#10b981" font-size="12" font-weight="700">● 15/15 Tests • 14 Tables PASS</text>
+    <text x="15" y="18" fill="#64748b" font-size="10" font-weight="600">VERIFICATION STATUS</text>
+    <text x="15" y="34" fill="#10b981" font-size="12" font-weight="700">15/15 Tests | 14 Tables PASS</text>
   </g>
 
   <!-- Zone 1: Presentation & Entry Layer -->
   <rect x="45" y="135" width="265" height="465" rx="12" fill="#0f172a" fill-opacity="0.6" stroke="#334155" stroke-dasharray="4 4" stroke-width="1.5"/>
-  <text x="65" y="163" fill="#64748b" font-size="11" font-weight="700" letter-spacing="1.5">01 / PRESENTATION &amp; CLI</text>
+  <text x="65" y="163" fill="#64748b" font-size="11" font-weight="700" letter-spacing="1.5">01 / HTTP &amp; CLI LAYER</text>
 
   <!-- Zone 2: Application & Service Layer -->
   <rect x="335" y="135" width="475" height="465" rx="12" fill="#0f172a" fill-opacity="0.45" stroke="#0284c7" stroke-dasharray="4 4" stroke-width="1.5"/>
-  <text x="355" y="163" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1.5">02 / APPLICATION SERVICES &amp; DOMAIN (CI4)</text>
+  <text x="355" y="163" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1.5">02 / SERVICE &amp; DOMAIN LAYER (CI4)</text>
 
   <!-- Zone 3: MySQL 8 InnoDB Storage -->
   <rect x="835" y="135" width="320" height="465" rx="12" fill="#0f172a" fill-opacity="0.6" stroke="#8b5cf6" stroke-dasharray="4 4" stroke-width="1.5"/>
   <text x="855" y="163" fill="#a78bfa" font-size="11" font-weight="700" letter-spacing="1.5">03 / MYSQL 8 INNODB (14 TABLES)</text>
 
   <!-- Animated Connecting Paths -->
-  <!-- Playground -> Calculator -->
   <path d="M 290 225 L 360 225" fill="none" stroke="#38bdf8" stroke-width="2.5" class="anim-flow"/>
-  <!-- REST API -> SubscriptionService -->
   <path d="M 290 360 L 360 360" fill="none" stroke="#38bdf8" stroke-width="2.5" class="anim-flow"/>
-  <!-- SubscriptionService -> Calculator -->
   <path d="M 450 310 L 450 275" fill="none" stroke="#38bdf8" stroke-width="2" class="anim-flow"/>
-  <!-- SubscriptionService -> Invoice & Credit Service -->
   <path d="M 545 360 L 605 360" fill="none" stroke="#10b981" stroke-width="2.5" class="anim-flow"/>
-  <!-- SubscriptionService -> CI4 Model Events -->
   <path d="M 450 415 L 450 475" fill="none" stroke="#f59e0b" stroke-width="2.5" class="anim-flow"/>
-  <!-- Webhook & Spark CLI -> Payment & Renewal -->
   <path d="M 290 505 L 360 505" fill="none" stroke="#f59e0b" stroke-width="2.5" class="anim-flow"/>
-  <!-- Services -> InnoDB Tables -->
   <path d="M 785 235 L 855 235" fill="none" stroke="#38bdf8" stroke-width="2.5" class="anim-flow"/>
   <path d="M 785 360 L 855 360" fill="none" stroke="#10b981" stroke-width="2.5" class="anim-flow"/>
   <path d="M 785 510 L 855 510" fill="none" stroke="#8b5cf6" stroke-width="2.5" class="anim-flow"/>
@@ -103,9 +96,9 @@
     <rect width="225" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow-card)"/>
     <circle cx="22" cy="25" r="6" fill="#38bdf8"/>
     <text x="36" y="29" fill="#ffffff" font-size="13" font-weight="700">Prorata Playground UI</text>
-    <text x="36" y="47" fill="#94a3b8" font-size="11" class="code-font">/playground • /docs</text>
+    <text x="36" y="47" fill="#94a3b8" font-size="11" class="code-font">/playground | /docs</text>
     <rect x="36" y="57" width="170" height="16" rx="3" fill="#0284c7" fill-opacity="0.25"/>
-    <text x="42" y="68" fill="#38bdf8" font-size="9" font-weight="600">Live Simulator &amp; Code Snippet</text>
+    <text x="42" y="68" fill="#38bdf8" font-size="9" font-weight="600">Simulation &amp; Code Generator</text>
   </g>
 
   <!-- NODE 2: REST API & Idempotency Gate -->
@@ -114,7 +107,7 @@
     <circle cx="22" cy="25" r="6" fill="#a78bfa"/>
     <text x="36" y="29" fill="#ffffff" font-size="13" font-weight="700">REST API Controller</text>
     <text x="36" y="47" fill="#94a3b8" font-size="11" class="code-font">POST /api/langganan/{id}</text>
-    <text x="36" y="63" fill="#cbd5e1" font-size="10">• Header: Idempotency-Key</text>
+    <text x="36" y="63" fill="#cbd5e1" font-size="10">- Header: Idempotency-Key</text>
     <rect x="36" y="72" width="170" height="16" rx="3" fill="#8b5cf6" fill-opacity="0.25"/>
     <text x="42" y="83" fill="#c084fc" font-size="9" font-weight="600">Rate Limit: 60 req/min (Sliding)</text>
   </g>
@@ -129,23 +122,23 @@
     <text x="36" y="80" fill="#cbd5e1" font-size="10" class="code-font">spark billing:renew</text>
   </g>
 
-  <!-- NODE 4: ProrataCalculator (Boss Fight #1) -->
+  <!-- NODE 4: ProrataCalculator -->
   <g transform="translate(360, 180)">
     <rect width="425" height="95" rx="8" fill="#082f49" stroke="#38bdf8" stroke-width="1.8" filter="url(#glow-cyan)"/>
-    <text x="16" y="22" fill="#38bdf8" font-size="9" font-weight="800" letter-spacing="1">PURE CALCULATION ENGINE • ZERO FLOAT DRIFT</text>
+    <text x="16" y="22" fill="#38bdf8" font-size="9" font-weight="800" letter-spacing="1">CALCULATION ENGINE | INTEGER ARITHMETIC</text>
     <text x="16" y="42" fill="#ffffff" font-size="14" font-weight="700">ProrataCalculator &amp; HasilProrata DTO</text>
     <text x="16" y="61" fill="#7dd3fc" font-size="11" class="code-font">intdiv($hargaSen * $sisaHari, $totalHari) + Half-Up</text>
-    <text x="16" y="79" fill="#94a3b8" font-size="10">Interval [mulai, selesai) • Kalender Nyata 28/29/30/31 Hari • keRupiahPenuh()</text>
+    <text x="16" y="79" fill="#94a3b8" font-size="10">Interval [mulai, selesai) | Calendar 28/29/30/31 Days | keRupiahPenuh()</text>
   </g>
 
-  <!-- NODE 5: SubscriptionService (Boss Fight #2) -->
+  <!-- NODE 5: SubscriptionService -->
   <g transform="translate(360, 310)">
     <rect width="185" height="105" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.5"/>
     <text x="14" y="23" fill="#38bdf8" font-size="9" font-weight="700" letter-spacing="1">ORCHESTRATOR</text>
     <text x="14" y="42" fill="#ffffff" font-size="13" font-weight="700">SubscriptionService</text>
     <text x="14" y="59" fill="#94a3b8" font-size="11" class="code-font">gantiPaket()</text>
-    <text x="14" y="76" fill="#cbd5e1" font-size="10">• DB transBegin()</text>
-    <text x="14" y="91" fill="#34d399" font-size="10" class="code-font">• SELECT FOR UPDATE</text>
+    <text x="14" y="76" fill="#cbd5e1" font-size="10">- DB transBegin()</text>
+    <text x="14" y="91" fill="#34d399" font-size="10" class="code-font">- SELECT FOR UPDATE</text>
   </g>
 
   <!-- NODE 6: InvoiceService & CreditService -->
@@ -153,54 +146,51 @@
     <rect width="180" height="105" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
     <text x="14" y="23" fill="#34d399" font-size="9" font-weight="700" letter-spacing="1">BILLING &amp; LEDGER</text>
     <text x="14" y="42" fill="#ffffff" font-size="13" font-weight="700">Invoice &amp; CreditSvc</text>
-    <text x="14" y="59" fill="#cbd5e1" font-size="10">• PPN 11% (1100 bps)</text>
-    <text x="14" y="75" fill="#cbd5e1" font-size="10">• Credit Ledger Deposit</text>
-    <text x="14" y="91" fill="#cbd5e1" font-size="10">• Sequential INV/YYYY/MM</text>
+    <text x="14" y="59" fill="#cbd5e1" font-size="10">- VAT 11% (1100 bps)</text>
+    <text x="14" y="75" fill="#cbd5e1" font-size="10">- Credit Ledger Deposit</text>
+    <text x="14" y="91" fill="#cbd5e1" font-size="10">- Sequential INV/YYYY/MM</text>
   </g>
 
   <!-- NODE 7: CI4 Model Events & Gateway Factory -->
   <g transform="translate(360, 455)">
     <rect width="425" height="105" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
-    <text x="16" y="23" fill="#fbbf24" font-size="9" font-weight="700" letter-spacing="1">AUDIT EVENTS &amp; MULTI-GATEWAY ADAPTER FACTORY</text>
-    <text x="16" y="43" fill="#ffffff" font-size="13" font-weight="700">LanggananModel Events • PaymentService Adapters</text>
-    <text x="16" y="62" fill="#cbd5e1" font-size="10" class="code-font">• beforeUpdate / afterUpdate / afterInsert -&gt; riwayat_perubahan</text>
-    <text x="16" y="79" fill="#cbd5e1" font-size="10">• Midtrans Adapter (QRIS + SHA-512 hash_equals) &amp; Xendit Adapter</text>
-    <text x="16" y="94" fill="#94a3b8" font-size="10">• Automated Renewal, Dunning [H+1, H+3, H+7] &amp; Trial Expiration</text>
+    <text x="16" y="23" fill="#fbbf24" font-size="9" font-weight="700" letter-spacing="1">AUDIT EVENTS &amp; PAYMENT GATEWAY ADAPTERS</text>
+    <text x="16" y="43" fill="#ffffff" font-size="13" font-weight="700">LanggananModel Events | PaymentService Adapters</text>
+    <text x="16" y="62" fill="#cbd5e1" font-size="10" class="code-font">- beforeUpdate / afterUpdate / afterInsert -&gt; riwayat_perubahan</text>
+    <text x="16" y="79" fill="#cbd5e1" font-size="10">- Midtrans Adapter (QRIS + SHA-512 hash_equals) &amp; Xendit Adapter</text>
+    <text x="16" y="94" fill="#94a3b8" font-size="10">- Automated Renewal, Dunning [D+1, D+3, D+7] &amp; Trial Expiration</text>
   </g>
 
   <!-- NODE 8: MySQL 8 InnoDB 14 Tables -->
   <g transform="translate(855, 180)">
-    <!-- Group A: Core & Subscription -->
     <rect width="280" height="115" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <rect width="280" height="26" rx="8" fill="#0369a1" fill-opacity="0.45"/>
     <text x="14" y="18" fill="#7dd3fc" font-size="11" font-weight="700">CORE &amp; SUBSCRIPTION (4 TABLES)</text>
-    <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">• users (peran, status)</text>
-    <text x="14" y="62" fill="#cbd5e1" font-size="11" class="code-font">• paket_langganan (harga_sen BIGINT)</text>
-    <text x="14" y="80" fill="#cbd5e1" font-size="11" class="code-font">• langganan (periode, versi, status)</text>
-    <text x="14" y="98" fill="#38bdf8" font-size="11" class="code-font">• riwayat_perubahan (Append-Only)</text>
+    <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">- users (peran, status)</text>
+    <text x="14" y="62" fill="#cbd5e1" font-size="11" class="code-font">- paket_langganan (harga_sen BIGINT)</text>
+    <text x="14" y="80" fill="#cbd5e1" font-size="11" class="code-font">- langganan (periode, versi, status)</text>
+    <text x="14" y="98" fill="#38bdf8" font-size="11" class="code-font">- riwayat_perubahan (Append-Only)</text>
 
-    <!-- Group B: Invoicing & Credit Ledger -->
     <g transform="translate(0, 130)">
       <rect width="280" height="125" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
       <rect width="280" height="26" rx="8" fill="#064e3b" fill-opacity="0.6"/>
       <text x="14" y="18" fill="#34d399" font-size="11" font-weight="700">INVOICE &amp; LEDGER (5 TABLES)</text>
-      <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">• tagihan_user (nomor, total_sen)</text>
-      <text x="14" y="61" fill="#cbd5e1" font-size="11" class="code-font">• tagihan_item (kredit/tagih/pajak)</text>
-      <text x="14" y="78" fill="#34d399" font-size="11" class="code-font">• saldo_kredit (CK: saldo_sen &gt;= 0)</text>
-      <text x="14" y="95" fill="#cbd5e1" font-size="11" class="code-font">• buku_kredit (delta_sen, ledger)</text>
-      <text x="14" y="112" fill="#cbd5e1" font-size="11" class="code-font">• penomoran_invoice (tahun, bulan)</text>
+      <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">- tagihan_user (nomor, total_sen)</text>
+      <text x="14" y="61" fill="#cbd5e1" font-size="11" class="code-font">- tagihan_item (kredit/tagih/pajak)</text>
+      <text x="14" y="78" fill="#34d399" font-size="11" class="code-font">- saldo_kredit (CK: saldo_sen &gt;= 0)</text>
+      <text x="14" y="95" fill="#cbd5e1" font-size="11" class="code-font">- buku_kredit (delta_sen, ledger)</text>
+      <text x="14" y="112" fill="#cbd5e1" font-size="11" class="code-font">- penomoran_invoice (tahun, bulan)</text>
     </g>
 
-    <!-- Group C: Payment, Coupon & Security -->
     <g transform="translate(0, 270)">
       <rect width="280" height="125" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
       <rect width="280" height="26" rx="8" fill="#4c1d95" fill-opacity="0.6"/>
       <text x="14" y="18" fill="#c084fc" font-size="11" font-weight="700">GATEWAY &amp; SECURITY (5 TABLES)</text>
-      <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">• pembayaran (midtrans/xendit/qris)</text>
-      <text x="14" y="61" fill="#cbd5e1" font-size="11" class="code-font">• kupon &amp; pemakaian_kupon</text>
-      <text x="14" y="78" fill="#c084fc" font-size="11" class="code-font">• idempotency_keys (hash_request)</text>
-      <text x="14" y="95" fill="#cbd5e1" font-size="11" class="code-font">• audit_logs (sebelum &amp; sesudah JSON)</text>
-      <text x="14" y="112" fill="#64748b" font-size="10">100% ACID Foreign Keys &amp; Unique Indexes</text>
+      <text x="14" y="44" fill="#cbd5e1" font-size="11" class="code-font">- pembayaran (midtrans/xendit/qris)</text>
+      <text x="14" y="61" fill="#cbd5e1" font-size="11" class="code-font">- kupon &amp; pemakaian_kupon</text>
+      <text x="14" y="78" fill="#c084fc" font-size="11" class="code-font">- idempotency_keys (hash_request)</text>
+      <text x="14" y="95" fill="#cbd5e1" font-size="11" class="code-font">- audit_logs (sebelum &amp; sesudah JSON)</text>
+      <text x="14" y="112" fill="#64748b" font-size="10">ACID Foreign Keys &amp; Unique Constraints</text>
     </g>
   </g>
 

@@ -48,7 +48,6 @@ final class PlaygroundController extends BaseController
                 new DateTimeImmutable($tglUbah)
             );
 
-            // Perhitungan PPN 11% dan pembulatan rupiah jika ada tagihan bersih
             $bersihSen    = $hasil->bersihSen;
             $dasarPajak   = max(0, $bersihSen);
             $pajakSen     = intdiv($dasarPajak * 1100 + 5000, 10000);

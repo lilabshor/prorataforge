@@ -14,15 +14,25 @@ final class CreditService
             return $this->saldoSekarang($userId);
         }
         $db = Database::connect();
-        $db->query(
-            'INSERT INTO saldo_kredit (user_id, saldo_sen) '
-            . 'VALUES (?, 0) '
-            . 'ON DUPLICATE KEY UPDATE user_id = user_id',
-            [$userId]);
-        $baris = $db->query(
-            'SELECT saldo_sen FROM saldo_kredit '
-            . 'WHERE user_id = ? FOR UPDATE',
-            [$userId])->getRowArray();
+        if ($db->DBDriver === 'MySQLi') {
+            $db->query(
+                'INSERT INTO saldo_kredit (user_id, saldo_sen) '
+                . 'VALUES (?, 0) '
+                . 'ON DUPLICATE KEY UPDATE user_id = user_id',
+                [$userId]
+            );
+            $baris = $db->query(
+                'SELECT saldo_sen FROM saldo_kredit '
+                . 'WHERE user_id = ? FOR UPDATE',
+                [$userId]
+            )->getRowArray();
+        } else {
+            $ada = $db->table('saldo_kredit')->where('user_id', $userId)->countAllResults();
+            if ($ada === 0) {
+                $db->table('saldo_kredit')->insert(['user_id' => $userId, 'saldo_sen' => 0]);
+            }
+            $baris = $db->table('saldo_kredit')->where('user_id', $userId)->get()->getRowArray();
+        }
         $setelah = (int) $baris['saldo_sen'] + $sen;
         $db->table('saldo_kredit')->where('user_id', $userId)
             ->update(['saldo_sen' => $setelah]);
@@ -40,10 +50,15 @@ final class CreditService
                                int $tagihanId): int
     {
         $db = Database::connect();
-        $baris = $db->query(
-            'SELECT saldo_sen FROM saldo_kredit '
-            . 'WHERE user_id = ? FOR UPDATE',
-            [$userId])->getRowArray();
+        if ($db->DBDriver === 'MySQLi') {
+            $baris = $db->query(
+                'SELECT saldo_sen FROM saldo_kredit '
+                . 'WHERE user_id = ? FOR UPDATE',
+                [$userId]
+            )->getRowArray();
+        } else {
+            $baris = $db->table('saldo_kredit')->where('user_id', $userId)->get()->getRowArray();
+        }
         if ($baris === null) {
             return 0;
         }
@@ -67,9 +82,11 @@ final class CreditService
 
     public function saldoSekarang(int $userId): int
     {
-        $baris = Database::connect()->query(
-            'SELECT saldo_sen FROM saldo_kredit '
-            . 'WHERE user_id = ?', [$userId])->getRowArray();
+        $baris = Database::connect()->table('saldo_kredit')
+            ->where('user_id', $userId)
+            ->get()
+            ->getRowArray();
+
         return $baris === null ? 0 : (int) $baris['saldo_sen'];
     }
 }

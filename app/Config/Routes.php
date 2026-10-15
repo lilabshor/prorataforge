@@ -11,6 +11,7 @@ $routes->post('api/kalkulator/simulasi', 'PlaygroundController::hitung');
 $routes->get('demo/user', 'Home::demoUser');
 $routes->get('demo/admin', 'Home::demoAdmin');
 $routes->get('demo/logout', 'Home::logout');
+$routes->get('logout', 'Home::logout');
 
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('langganan', 'LanggananController::index');

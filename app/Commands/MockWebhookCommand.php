@@ -28,13 +28,11 @@ final class MockWebhookCommand extends BaseCommand
 
         $pembayaranModel = model(PembayaranModel::class);
 
-        // Cari berdasarkan ref_gateway 'PF-X' atau ID pembayaran
         if (str_starts_with($orderInput, 'PF-')) {
             $bayar = $pembayaranModel->where('ref_gateway', $orderInput)->first();
         } else {
             $bayar = $pembayaranModel->find((int) $orderInput);
             if ($bayar === null) {
-                // Coba cari berdasarkan tagihan_id
                 $bayar = $pembayaranModel->where('tagihan_id', (int) $orderInput)->orderBy('id', 'DESC')->first();
             }
         }
@@ -51,7 +49,6 @@ final class MockWebhookCommand extends BaseCommand
         $statusTx    = 'settlement';
         $kunciServer = (string) env('MIDTRANS_SERVER_KEY');
 
-        // Buat signature valid Midtrans
         $signature = hash('sha512', $orderId . $statusKode . $grossAmount . $kunciServer);
 
         $payload = [
@@ -67,7 +64,6 @@ final class MockWebhookCommand extends BaseCommand
         CLI::write("Mengirim simulasi webhook untuk {$orderId}...", 'cyan');
         CLI::write("Nominal: Rp" . number_format((float) $grossAmount, 0, ',', '.'));
 
-        // Kirim request ke endpoint webhook lokal
         $url = site_url('webhook/pembayaran');
         $ch  = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

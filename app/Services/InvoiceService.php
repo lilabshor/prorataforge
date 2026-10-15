@@ -13,7 +13,7 @@ final class InvoiceService
 {
     public function __construct(
         private CreditService $creditSvc,
-        private int $pajakBasisPoin = 1100, // PPN 11.00%
+        private int $pajakBasisPoin = 1100,
     ) {}
 
     public function buatInvoiceProrata(
@@ -221,16 +221,37 @@ final class InvoiceService
         $tahun = (int) date('Y');
         $bulan = (int) date('n');
 
-        $db->query(
-            'INSERT INTO penomoran_invoice (tahun, bulan, terakhir) VALUES (?, ?, 0) '
-            . 'ON DUPLICATE KEY UPDATE terakhir = terakhir',
-            [$tahun, $bulan]
-        );
+        if ($db->DBDriver === 'MySQLi') {
+            $db->query(
+                'INSERT INTO penomoran_invoice (tahun, bulan, terakhir) VALUES (?, ?, 0) '
+                . 'ON DUPLICATE KEY UPDATE terakhir = terakhir',
+                [$tahun, $bulan]
+            );
 
-        $baris = $db->query(
-            'SELECT terakhir FROM penomoran_invoice WHERE tahun = ? AND bulan = ? FOR UPDATE',
-            [$tahun, $bulan]
-        )->getRowArray();
+            $baris = $db->query(
+                'SELECT terakhir FROM penomoran_invoice WHERE tahun = ? AND bulan = ? FOR UPDATE',
+                [$tahun, $bulan]
+            )->getRowArray();
+        } else {
+            $ada = $db->table('penomoran_invoice')
+                ->where('tahun', $tahun)
+                ->where('bulan', $bulan)
+                ->countAllResults();
+
+            if ($ada === 0) {
+                $db->table('penomoran_invoice')->insert([
+                    'tahun'    => $tahun,
+                    'bulan'    => $bulan,
+                    'terakhir' => 0,
+                ]);
+            }
+
+            $baris = $db->table('penomoran_invoice')
+                ->where('tahun', $tahun)
+                ->where('bulan', $bulan)
+                ->get()
+                ->getRowArray();
+        }
 
         $berikut = (int) ($baris['terakhir'] ?? 0) + 1;
 

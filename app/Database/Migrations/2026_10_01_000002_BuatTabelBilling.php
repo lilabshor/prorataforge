@@ -10,7 +10,6 @@ class BuatTabelBilling extends Migration
 {
     public function up(): void
     {
-        // 1. Tabel langganan
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -80,7 +79,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('user_id');
         $this->forge->createTable('langganan', true);
 
-        // 2. Tabel tagihan_user
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -180,7 +178,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('user_id');
         $this->forge->createTable('tagihan_user', true);
 
-        // 3. Tabel tagihan_item
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -227,7 +224,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('tagihan_id');
         $this->forge->createTable('tagihan_item', true);
 
-        // 4. Tabel pembayaran
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -285,7 +281,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('tagihan_id');
         $this->forge->createTable('pembayaran', true);
 
-        // 5. Tabel saldo_kredit
         $this->forge->addField([
             'user_id' => [
                 'type'       => 'BIGINT',
@@ -305,7 +300,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('user_id', true);
         $this->forge->createTable('saldo_kredit', true);
 
-        // 6. Tabel buku_kredit
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -350,7 +344,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('user_id');
         $this->forge->createTable('buku_kredit', true);
 
-        // 7. Tabel riwayat_perubahan
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -405,7 +398,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey('langganan_id');
         $this->forge->createTable('riwayat_perubahan', true);
 
-        // 8. Tabel penomoran_invoice
         $this->forge->addField([
             'tahun' => [
                 'type'     => 'SMALLINT',
@@ -424,7 +416,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addKey(['tahun', 'bulan'], true);
         $this->forge->createTable('penomoran_invoice', true);
 
-        // 9. Tabel idempotency_keys
         $this->forge->addField([
             'id' => [
                 'type'           => 'BIGINT',
@@ -467,7 +458,6 @@ class BuatTabelBilling extends Migration
         $this->forge->addUniqueKey(['user_id', 'endpoint', 'kunci']);
         $this->forge->createTable('idempotency_keys', true);
 
-        // 10. Tabel kupon
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',

@@ -12,7 +12,6 @@ final class BillingSeeder extends Seeder
     {
         $db = $this->db;
 
-        // 1. Seed Demo User
         $userAda = $db->table('users')->where('id', 1)->get()->getRowArray();
         if ($userAda === null) {
             $db->table('users')->insert([
@@ -25,12 +24,11 @@ final class BillingSeeder extends Seeder
             ]);
         }
 
-        // 2. Seed Paket Langganan
         $paketData = [
             [
                 'kode'           => 'starter_monthly',
                 'nama'           => 'Paket Starter',
-                'harga_sen'      => 9900000, // Rp 99.000
+                'harga_sen'      => 9900000,
                 'mata_uang'      => 'IDR',
                 'interval_bulan' => 1,
                 'fitur_json'     => json_encode(['Hingga 50 transaksi/bln', 'Export PDF', 'Support Email']),
@@ -43,7 +41,7 @@ final class BillingSeeder extends Seeder
             [
                 'kode'           => 'pro_monthly',
                 'nama'           => 'Paket Professional',
-                'harga_sen'      => 19900000, // Rp 199.000
+                'harga_sen'      => 19900000,
                 'mata_uang'      => 'IDR',
                 'interval_bulan' => 1,
                 'fitur_json'     => json_encode(['Unlimited transaksi', 'Integrasi Midtrans', 'Prorata Engine', 'Priority Support']),
@@ -56,7 +54,7 @@ final class BillingSeeder extends Seeder
             [
                 'kode'           => 'enterprise_monthly',
                 'nama'           => 'Paket Enterprise',
-                'harga_sen'      => 49900000, // Rp 499.000
+                'harga_sen'      => 49900000,
                 'mata_uang'      => 'IDR',
                 'interval_bulan' => 1,
                 'fitur_json'     => json_encode(['Dedicated Account Manager', 'Custom SLA 99.9%', 'Custom Gateway']),
@@ -69,7 +67,7 @@ final class BillingSeeder extends Seeder
             [
                 'kode'           => 'pro_annual',
                 'nama'           => 'Paket Pro Tahunan',
-                'harga_sen'      => 199000000, // Rp 1.990.000 (Hemat 2 bulan)
+                'harga_sen'      => 199000000,
                 'mata_uang'      => 'IDR',
                 'interval_bulan' => 12,
                 'fitur_json'     => json_encode(['Semua fitur Pro', 'Diskon 2 bulan', 'Free onboarding']),
@@ -88,20 +86,19 @@ final class BillingSeeder extends Seeder
             }
         }
 
-        // 3. Seed Kupon Diskon
         $kuponData = [
             [
                 'kode'            => 'HEMAT10',
                 'jenis'           => 'persen',
-                'nilai'           => 10, // 10%
-                'maks_diskon_sen' => 5000000, // Maksimal diskon Rp 50.000
+                'nilai'           => 10,
+                'maks_diskon_sen' => 5000000,
                 'is_aktif'        => 1,
                 'created_at'      => date('Y-m-d H:i:s'),
             ],
             [
                 'kode'            => 'POTONG50K',
                 'jenis'           => 'nominal',
-                'nilai'           => 5000000, // Rp 50.000
+                'nilai'           => 5000000,
                 'maks_diskon_sen' => 5000000,
                 'is_aktif'        => 1,
                 'created_at'      => date('Y-m-d H:i:s'),
@@ -115,7 +112,6 @@ final class BillingSeeder extends Seeder
             }
         }
 
-        // 4. Seed Sample Langganan untuk User ID 1 (Jika belum ada)
         $langgananAda = $db->table('langganan')->where('user_id', 1)->get()->getRowArray();
         if ($langgananAda === null) {
             $starterPaket = $db->table('paket_langganan')->where('kode', 'starter_monthly')->get()->getRowArray();

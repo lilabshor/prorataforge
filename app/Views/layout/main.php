@@ -345,7 +345,7 @@
                     <span style="color: var(--text-muted);">
                         Sesi: <strong style="color: var(--text-heading);"><?= session('is_admin') ? 'Administrator' : 'Pelanggan' ?></strong>
                     </span>
-                    <a href="<?= site_url('demo/logout') ?>" class="btn-ui btn-ui-secondary btn-ui-sm">Keluar</a>
+                    <a href="<?= site_url('logout') ?>" class="btn-ui btn-ui-secondary btn-ui-sm">Keluar</a>
                 <?php else: ?>
                     <a href="<?= site_url('demo/user') ?>" class="btn-ui btn-ui-secondary btn-ui-sm">Login User</a>
                     <a href="<?= site_url('demo/admin') ?>" class="btn-ui btn-ui-dark btn-ui-sm">Login Admin</a>

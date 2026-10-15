@@ -1,15 +1,17 @@
 <div align="center">
 
-# ⚡ ProrataForge
-### High-Precision Enterprise SaaS Billing & Prorata Engine
-*Ganti paket di tengah bulan? Tagihannya tetap adil, sampai ke sen terakhir.*
+<h1>⚡ ProrataForge</h1>
+<h3>High-Precision Enterprise SaaS Billing &amp; Prorata Engine</h3>
+<p><em>Ganti paket di tengah bulan? Tagihannya tetap adil, sampai ke sen terakhir.</em></p>
 
-[[https://img.shields.io/badge/CodeIgniter-4.5%2B-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white]](https://codeigniter.com)
-[[https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php&logoColor=white]](https://www.php.net)
-[[https://img.shields.io/badge/MySQL-8.0_InnoDB-4479A1?style=for-the-badge&logo=mysql&logoColor=white]](https://www.mysql.com)
-[[https://img.shields.io/badge/Precision-Zero_Float_Drift-10B981?style=for-the-badge&logo=shield&logoColor=white]](https://www.php.net/manual/en/function.intdiv.php)
-[[https://img.shields.io/badge/PHPUnit-15%2F15_Passing-38BDF8?style=for-the-badge&logo=phpunit&logoColor=white]](https://phpunit.de)
-[[https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge]](LICENSE)
+<p align="center">
+  <a href="https://codeigniter.com"><img src="https://img.shields.io/badge/CodeIgniter-4.5%2B-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white" alt="CodeIgniter 4"></a>
+  <a href="https://www.php.net"><img src="https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.3+"></a>
+  <a href="https://www.mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0_InnoDB-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL 8.0"></a>
+  <a href="https://www.php.net/manual/en/function.intdiv.php"><img src="https://img.shields.io/badge/Precision-Zero_Float_Drift-10B981?style=for-the-badge&logo=shield&logoColor=white" alt="Zero Float Drift"></a>
+  <a href="https://phpunit.de"><img src="https://img.shields.io/badge/PHPUnit-15%2F15_Passing-38BDF8?style=for-the-badge&logo=phpunit&logoColor=white" alt="PHPUnit 15/15"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
+</p>
 
 <p align="center">
   <strong>High-Precision SaaS Billing &amp; Prorata Engine</strong> yang dibangun di atas <strong>CodeIgniter 4</strong> dan <strong>PHP 8.3+</strong>.<br>
